@@ -45,7 +45,11 @@ var headers = {headers: new HttpHeaders({
 //});
 //console.log(  "http://localhost:3000/api/items?access_token="+token);
 this.http.get<Item[]>("http://localhost:3000/api/items?access_token="+token,headers).subscribe(resp => {
-this.items = resp;
+
+this.items = resp.map((item) => new Item(item.name));
+
+
+
 
 });
 
