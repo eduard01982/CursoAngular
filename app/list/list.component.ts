@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from "../../_modelo/Item";
-import { MockItemsService } from  "../_services/mock-items.service"
+//import { MockItemsService } from  "../_services/mock-items.service"
+import {HttpsItemsService} from "../_services/https-items.service"
 
 @Component({
   selector: 'app-list',
@@ -11,7 +12,8 @@ export class ListComponent implements OnInit {
 
   items:Item[];
   
-  constructor(private service: MockItemsService) {
+  //constructor(private service: MockItemsService) {
+    constructor(private service: HttpsItemsService) {
     this.service.getItems().subscribe(serviceItems=> this.items = serviceItems);
    }
 
@@ -19,7 +21,7 @@ export class ListComponent implements OnInit {
   }
 
   onRemove(item: Item){
-    this.service.Remove(item).subscribe(serviceItems=> this.items = serviceItems);
+   // this.service.Remove(item).subscribe(serviceItems=> this.items = serviceItems);
   }
 
 }
