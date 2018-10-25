@@ -36,8 +36,8 @@ this.url = "http://localhost:3000/api/"
   
 
 var headers = {headers: new HttpHeaders({
-  "contentType: ": "application/json",
-  "Autentication":token
+  "Content-Type": "application/json",
+  "Authentication":token
 })}
 //this.http.get(this.url,headers).subscribe(resp => {
   //console.log();
@@ -46,20 +46,20 @@ var headers = {headers: new HttpHeaders({
 //console.log(  "http://localhost:3000/api/items?access_token="+token);
 this.http.get<Item[]>("http://localhost:3000/api/items?access_token="+token,headers).subscribe(resp => {
 
-this.items = resp.map((item) => new Item(item.name));
+      this.items = resp.map((item) => new Item(item.name));
+
+      console.log(this.items);
+      observable.next(this.items);
+      observable.complete();
+
+      });
 
 
 
-
-});
-
-observable.next(this.items);
-observable.complete();
-
-  })
+     })
 
 
 
-})
+    })
   }
 }
